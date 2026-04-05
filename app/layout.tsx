@@ -1,7 +1,7 @@
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/components/LanguageProvider'
-import CookieBanner from '@/components/CookieBanner'
+
 import InstallPrompt from '@/components/InstallPrompt'
 
 const playfair = Playfair_Display({
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${playfair.variable} ${dmSans.variable}`}>
         <LanguageProvider>
           {children}
-        <CookieBanner />
+        
         <InstallPrompt />
         </LanguageProvider>
       </body>
