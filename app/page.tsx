@@ -49,7 +49,7 @@ export default function Home() {
           <span className="text-2xl text-[#f5efe3]" style={{fontFamily:'var(--font-playfair)'}}>interlüde</span>
           <div className="flex items-center gap-3">
             <button onClick={() => setShowLanguage(!showLanguage)} className="text-[rgba(245,239,227,0.5)] text-sm px-3 py-2 rounded-xl hover:text-[#f5efe3] transition-colors">🌍</button>
-            <button onClick={() => window.location.href = '/auth?mode=signin'} className="text-[rgba(245,239,227,0.6)] text-sm px-4 py-2 rounded-xl hover:text-[#f5efe3] transition-colors">Sign in</button>
+            <button onClick={() => window.location.href = 'https://app.getinterlude.app/auth?mode=signin'} className="text-[rgba(245,239,227,0.6)] text-sm px-4 py-2 rounded-xl hover:text-[#f5efe3] transition-colors">Sign in</button>
             <button onClick={() => window.location.href = 'https://app.getinterlude.app/auth?mode=signup'} className="bg-[#c8a96e] text-[#0f0e17] text-sm font-medium px-4 py-2 rounded-xl hover:opacity-90 transition-opacity">Get started</button>
           </div>
         </div>
@@ -287,16 +287,16 @@ export default function Home() {
             <p className="text-[rgba(245,239,227,0.3)] text-xs">Turn your layover into a story.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4 text-[rgba(245,239,227,0.3)] text-xs">
-            <a href="/press" className="hover:text-[#c8a96e] transition-colors">Press & Media</a>
-            <a href="/auth?mode=signup" className="hover:text-[#c8a96e] transition-colors">Get started</a>
-            <a href="/auth?mode=signin" className="hover:text-[#c8a96e] transition-colors">Sign in</a>
+            <a href="https://app.getinterlude.app/press" className="hover:text-[#c8a96e] transition-colors">Press & Media</a>
+            <a href="https://app.getinterlude.app/auth?mode=signup" className="hover:text-[#c8a96e] transition-colors">Get started</a>
+            <a href="https://app.getinterlude.app/auth?mode=signin" className="hover:text-[#c8a96e] transition-colors">Sign in</a>
             <a href="mailto:evidence@getinterlude.app" className="hover:text-[#c8a96e] transition-colors">Contact</a>
-            <a href="/privacy" className="hover:text-[#c8a96e] transition-colors">Privacy</a>
-            <a href="/terms" className="hover:text-[#c8a96e] transition-colors">Terms</a>
+            <a href="https://app.getinterlude.app/privacy" className="hover:text-[#c8a96e] transition-colors">Privacy</a>
+            <a href="https://app.getinterlude.app/terms" className="hover:text-[#c8a96e] transition-colors">Terms</a>
             <a href="https://instagram.com/interludetravels" className="hover:text-[#c8a96e] transition-colors">Instagram</a>
             <a href="https://tiktok.com/@interludetravels" className="hover:text-[#c8a96e] transition-colors">TikTok</a>
-            <a href="/security" className="hover:text-[#c8a96e] transition-colors">Security</a>
-            <a href="/data-request" className="hover:text-[#c8a96e] transition-colors">Data Request</a>
+            <a href="https://app.getinterlude.app/security" className="hover:text-[#c8a96e] transition-colors">Security</a>
+            <a href="https://app.getinterlude.app/data-request" className="hover:text-[#c8a96e] transition-colors">Data Request</a>
           </div>
           <div className="text-center md:text-right">
             <p className="text-[rgba(245,239,227,0.2)] text-xs">© 2026 Interlüde Travels</p>
