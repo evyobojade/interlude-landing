@@ -1,0 +1,11 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.getinterlude.twa",
+    "sha256_cert_fingerprints": [
+      "3C:2F:B8:AA:9A:D2:A0:A5:2A:62:31:47:DB:7D:B8:35:58:45:AA:AF:4D:4C:80:00:9D:4F:58:A7:5F:D8:2A:68",
+      "CE:D2:35:3E:05:6A:B0:47:14:F0:52:D6:AF:34:91:67:85:6E:F7:CF:07:39:0D:6B:F0:1B:21:C7:13:0C:D3:36"
+    ]
+  }
+}]
