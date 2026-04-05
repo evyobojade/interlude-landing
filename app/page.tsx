@@ -16,7 +16,7 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleLanguageChange = async (code) => {
+  const handleLanguageChange = async (code: string) => {
     const msgs = await loadMessages(code)
     setMessages(msgs)
     setShowLanguage(false)
