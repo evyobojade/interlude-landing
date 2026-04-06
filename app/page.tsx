@@ -43,6 +43,9 @@ export default function Home() {
             animationDelay: `${Math.random()*3}s`
           }} />
         ))}
+        <div className="shooting-star" style={{top:'15%',left:'10%',animationDelay:'0s',animationDuration:'2.5s'}} />
+        <div className="shooting-star" style={{top:'35%',left:'40%',animationDelay:'4s',animationDuration:'3s'}} />
+        <div className="shooting-star" style={{top:'60%',left:'20%',animationDelay:'8s',animationDuration:'2s'}} />
       </div>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[rgba(15,14,23,0.95)] backdrop-blur-md border-b border-[rgba(200,169,110,0.1)]' : ''}`}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
