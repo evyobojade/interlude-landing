@@ -264,10 +264,13 @@ export default function Home() {
 
       <section className="py-14 px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="relative flex items-center justify-center" style={{width:'120px',height:'120px',margin:'0 auto 2rem'}}>
-            <div className="absolute rounded-full border border-[rgba(200,169,110,0.08)]" style={{width:'120px',height:'120px'}} />
-            <div className="absolute rounded-full border border-[rgba(200,169,110,0.05)]" style={{width:'90px',height:'90px'}} />
-            <div className="rounded-full" style={{width:'60px',height:'60px',background:'conic-gradient(from 180deg, #c8a96e, #7a5c2e, #e8d5b0, #f5efe3, #c8a96e)',boxShadow:'0 0 60px rgba(200,169,110,0.3), 0 0 120px rgba(200,169,110,0.1)',animation:'orbFloat 3s ease-in-out infinite',position:'relative'}} />
+          <div className="relative flex items-center justify-center" style={{width:'200px',height:'200px',margin:'0 auto 2rem'}}>
+            <div className="absolute rounded-full border border-[rgba(200,169,110,0.08)]" style={{width:'200px',height:'200px'}} />
+            <div className="absolute rounded-full border border-[rgba(200,169,110,0.05)]" style={{width:'150px',height:'150px'}} />
+            <div className="absolute rounded-full border border-[rgba(200,169,110,0.03)]" style={{width:'110px',height:'110px'}} />
+            <div className="rounded-full" style={{width:'80px',height:'80px',background:'conic-gradient(from 180deg, #c8a96e, #7a5c2e, #e8d5b0, #f5efe3, #c8a96e)',boxShadow:'0 0 60px rgba(200,169,110,0.3), 0 0 120px rgba(200,169,110,0.1)',animation:'orbFloat 3s ease-in-out infinite',position:'relative'}}>
+              <div style={{position:'absolute',inset:0,borderRadius:'50%',background:'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15), transparent 60%)'}} />
+            </div>
           </div>
           <h2 className="text-3xl md:text-5xl text-[#f5efe3] mb-6 leading-tight" style={{fontFamily:'var(--font-playfair)'}}>
             Moments and memories<br />that make life worth living.
