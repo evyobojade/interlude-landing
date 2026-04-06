@@ -267,7 +267,7 @@ export default function Home() {
           <div className="relative flex items-center justify-center" style={{width:'120px',height:'120px',margin:'0 auto 2rem'}}>
             <div className="absolute rounded-full border border-[rgba(200,169,110,0.08)]" style={{width:'120px',height:'120px'}} />
             <div className="absolute rounded-full border border-[rgba(200,169,110,0.05)]" style={{width:'90px',height:'90px'}} />
-            <div className="rounded-full" style={{width:'60px',height:'60px',background:'radial-gradient(circle at 35% 30%, #f5efe3 0%, #e8d5a0 20%, #c8a96e 50%, #a07840 75%, #7a5c2e 100%)',boxShadow:'0 0 40px rgba(200,169,110,0.3)',animation:'orbFloat 3s ease-in-out infinite'}} />
+            <div className="rounded-full" style={{width:'60px',height:'60px',background:'conic-gradient(from 180deg, #c8a96e, #7a5c2e, #e8d5b0, #f5efe3, #c8a96e)',boxShadow:'0 0 60px rgba(200,169,110,0.3), 0 0 120px rgba(200,169,110,0.1)',animation:'orbFloat 3s ease-in-out infinite',position:'relative'}} />
           </div>
           <h2 className="text-3xl md:text-5xl text-[#f5efe3] mb-6 leading-tight" style={{fontFamily:'var(--font-playfair)'}}>
             Moments and memories<br />that make life worth living.
