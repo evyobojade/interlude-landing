@@ -199,20 +199,7 @@ export default function Home() {
               Read full bio & press materials →
             </a>
           </div>
-          <div className="grid md:grid-cols-3 gap-4 mt-10">
-            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
-              <p className="text-[#c8a96e] text-sm font-medium mb-1">BC Registered</p>
-              <p className="text-[rgba(245,239,227,0.3)] text-xs">INTERLUDE TRAVELS<br/>#727835233BC0001</p>
-            </div>
-            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
-              <p className="text-[#c8a96e] text-sm font-medium mb-1">Trademark Filed</p>
-              <p className="text-[rgba(245,239,227,0.3)] text-xs">CIPO Application<br/>#2463206</p>
-            </div>
-            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
-              <p className="text-[#c8a96e] text-sm font-medium mb-1">Live Product</p>
-              <p className="text-[rgba(245,239,227,0.3)] text-xs">Serving travelers<br/>globally since March 2026</p>
-            </div>
-          </div>
+
         </div>
       </section>
 
