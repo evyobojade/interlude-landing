@@ -193,14 +193,11 @@ export default function Home() {
             <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Built by a traveler, for travelers</p>
             <h2 className="text-3xl md:text-4xl text-[#f5efe3] mb-4" style={{fontFamily:'var(--font-playfair)'}}>Founded by Evidence Oghenekioja Obojade</h2>
             <p className="text-[rgba(245,239,227,0.5)] text-base leading-relaxed max-w-2xl mx-auto mb-6">
-              Nigerian-Canadian entrepreneur based in Langford, British Columbia. Computer Science and Health Information Science graduate from the University of Victoria. Certified in cybersecurity (Microsoft AZ-500, CompTIA Security+). Built Interlüde from lived experience as a diaspora traveler who has navigated airports, immigration systems and cultural displacement across three continents.
+              Nigerian-Canadian entrepreneur. Computer Science and Health Information Science, University of Victoria. Built Interlüde from lived experience as a diaspora traveler who has navigated airports, immigration systems and cultural displacement across three continents.
             </p>
-            <div className="max-w-2xl mx-auto bg-[rgba(200,169,110,0.08)] border-l-4 border-[#c8a96e] rounded-r-xl p-6 mt-8">
-              <p className="text-[rgba(245,239,227,0.7)] text-lg leading-relaxed italic" style={{fontFamily:'var(--font-playfair)'}}>
-                "Why settle for just one adventure when your layover could hold many? Every journey is a chance to collect not just passport stamps, but stories that stay with you long after you've landed. Interlüde exists because spontaneous moments between strangers at airports — the shared meals, the unexpected detours, the fleeting friendships — those are the memories that remind us we're alive. This is for every traveler who refuses to waste time waiting when they could be living."
-              </p>
-              <p className="text-[#c8a96e] text-sm mt-4">— Evidence Obojade, Founder</p>
-            </div>
+            <a href="https://app.getinterlude.app/press" className="inline-flex items-center gap-2 text-[#c8a96e] text-sm hover:opacity-80 transition-opacity">
+              Read full bio & press materials →
+            </a>
           </div>
           <div className="grid md:grid-cols-3 gap-4 mt-10">
             <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
