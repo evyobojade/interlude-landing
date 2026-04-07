@@ -93,6 +93,28 @@ export default function Home() {
       </section>
 
       
+      {/* TRACTION & PROOF */}
+      <section className="py-10 px-6 border-t border-[rgba(200,169,110,0.1)]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Backed by global recognition</p>
+            <h2 className="text-2xl md:text-3xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>Selected for Web Summit 2026</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.15)] rounded-2xl p-6">
+              <p className="text-[#c8a96e] text-sm font-medium mb-2">🇨🇦 Web Summit Vancouver 2026</p>
+              <p className="text-[rgba(245,239,227,0.5)] text-sm mb-3">May 11-14, 2026 · Exhibition Booth · Investor Access</p>
+              <p className="text-[rgba(245,239,227,0.3)] text-xs">Selected for startup programme with exhibition space and direct access to global investors and partners.</p>
+            </div>
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.15)] rounded-2xl p-6">
+              <p className="text-[#c8a96e] text-sm font-medium mb-2">🇵🇹 Web Summit Lisbon 2026</p>
+              <p className="text-[rgba(245,239,227,0.5)] text-sm mb-3">November 2026 · 71,000+ Attendees · Exhibition Space</p>
+              <p className="text-[rgba(245,239,227,0.3)] text-xs">Selected for the world's largest tech conference with exhibition booth and access to founders, investors and partners from 170+ countries.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* VIDEO */}
       <section className="py-10 px-6">
         <div className="max-w-sm mx-auto text-center">
@@ -161,6 +183,33 @@ export default function Home() {
               <p className="text-[rgba(245,239,227,0.4)] text-sm">{stat.label}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* FOUNDER & LEGITIMACY SECTION */}
+      <section className="py-14 px-6 bg-[#0c0b14]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Built by a traveler, for travelers</p>
+            <h2 className="text-3xl md:text-4xl text-[#f5efe3] mb-4" style={{fontFamily:'var(--font-playfair)'}}>Founded by Evidence Oghenekioja Obojade</h2>
+            <p className="text-[rgba(245,239,227,0.5)] text-base leading-relaxed max-w-2xl mx-auto">
+              Nigerian-Canadian entrepreneur based in Langford, British Columbia. Computer Science graduate from the University of Victoria. Built Interlüde from lived experience as a diaspora traveler who has navigated airports, immigration systems and cultural displacement across three continents.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4 mt-10">
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
+              <p className="text-[#c8a96e] text-sm font-medium mb-1">BC Registered</p>
+              <p className="text-[rgba(245,239,227,0.3)] text-xs">INTERLUDE TRAVELS<br/>#727835233BC0001</p>
+            </div>
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
+              <p className="text-[#c8a96e] text-sm font-medium mb-1">Trademark Filed</p>
+              <p className="text-[rgba(245,239,227,0.3)] text-xs">CIPO Application<br/>#2463206</p>
+            </div>
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.1)] rounded-xl p-4 text-center">
+              <p className="text-[#c8a96e] text-sm font-medium mb-1">Live Product</p>
+              <p className="text-[rgba(245,239,227,0.3)] text-xs">Serving travelers<br/>globally since March 2026</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -282,7 +331,7 @@ export default function Home() {
           <button onClick={() => window.location.href = 'https://app.getinterlude.app/auth?mode=signup'} className="w-full max-w-sm py-5 rounded-2xl bg-[#c8a96e] text-[#0f0e17] font-medium text-lg hover:opacity-90 transition-opacity mx-auto block">
             Start your journey →
           </button>
-          <p className="text-[rgba(245,239,227,0.2)] text-xs mt-4">getinterlude.app · free forever</p>
+          <p className="text-[rgba(245,239,227,0.2)] text-xs mt-4">getinterlude.app · free to join</p>
         </div>
       </section>
 
