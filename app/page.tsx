@@ -173,7 +173,7 @@ export default function Home() {
       <section className="py-10 px-6 border-y border-[rgba(200,169,110,0.1)]">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            {number:'121',label:'Airports worldwide'},
+            {number:'150',label:'Airports worldwide'},
             {number:'15',label:'Languages supported'},
             {number:'6',label:'Continents covered'},
             {number:'$0',label:'Free to join'},
@@ -293,7 +293,7 @@ export default function Home() {
       <section className="py-14 px-6 bg-[#0c0b14]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Global coverage</p>
-          <h2 className="text-3xl md:text-4xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>121 airports across 6 continents</h2>
+          <h2 className="text-3xl md:text-4xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>150 airports across 6 continents</h2>
           <p className="text-[rgba(245,239,227,0.4)] text-sm leading-relaxed mb-10 max-w-xl mx-auto">From Lagos to London, Dubai to Toronto, Singapore to New York — if you have a layover, we have a guide. And we are always adding more.</p>
           <div className="flex flex-wrap justify-center gap-2">
             {['LHR','DXB','CDG','SIN','JFK','LOS','ACC','NBO','DOH','YYZ','BOM','ICN','GRU','IST','SYD','HKG','NRT','DEL','ORD','LAX','ATL','YVR','CPH','AMS','FRA'].map(code => (
