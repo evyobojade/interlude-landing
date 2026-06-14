@@ -245,7 +245,7 @@ export default function Home() {
               {icon:'💱',title:'Currency & payment intel',desc:'Live exchange rates, accepted cards at your airport and fintech partner referrals to avoid punishing international fees.'},
               {icon:'🚗',title:'Smart transport alerts',desc:'We monitor traffic for your return journey. If surge pricing or rush hour is predicted we alert you to book early.'},
               {icon:'🗺',title:'Your way planning',desc:'Have something in mind? Tell us a restaurant, shop or event and we plan your entire layover around it.'},
-              {icon:'🔔',title:'Gate change alerts',desc:'Real-time gate changes detected and sent to you the moment they happen.'},
+              {icon:'🔔',title:'Gate change updates',desc:'Open the app to see the latest gate, terminal and time the moment you check.'},
               {icon:'👥',title:'Smart matching',desc:'By layover time, language, hobbies, interests and profession — the most relevant connections first.'},
               {icon:'💬',title:'Group chat',desc:'Create a crew, plan together in real-time and stay connected throughout your layover.'},
               {icon:'⏰',title:'Return reminders',desc:'We calculate your travel time back and tell you exactly when to leave so you never miss your flight.'},
