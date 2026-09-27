@@ -1,5 +1,6 @@
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
+import { getCopy } from '@/lib/copy'
 import InstallPrompt from '@/components/InstallPrompt'
 
 const playfair = Playfair_Display({
@@ -12,9 +13,11 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans',
 })
 
+const copy = getCopy()
+
 export const metadata = {
-  title: 'Interlüde — The best stories hide in the in-between',
-  description: 'Enter your layover and get a plan built around your passport, your window and your budget, then get back to the gate on time.',
+  title: copy.meta.title,
+  description: copy.meta.description,
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,

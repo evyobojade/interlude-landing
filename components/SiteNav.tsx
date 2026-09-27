@@ -4,15 +4,16 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import GetAppButton from '@/components/GetAppButton'
 import { SIGN_IN_URL } from '@/lib/links'
+import type { Copy } from '@/lib/copy'
 
 // Top navigation: wordmark on the left, a pill of links in the centre, Get Interlüde on the right.
 // Below lg the pill and Sign in do not fit, so it becomes a menu button with a slide-down panel.
 // Section links always point at the home page ("/#pricing"), so they work from /about too.
-const LINKS = [
-  { href: '/#how-it-works', label: 'How it works' },
-  { href: '/#pricing', label: 'Pricing' },
-  { href: '/#keepsakes', label: 'Keepsakes' },
-  { href: '/about', label: 'About' },
+const links = (copy: Copy['nav']) => [
+  { href: '/#how-it-works', label: copy.howItWorks },
+  { href: '/#pricing', label: copy.pricing },
+  { href: '/#keepsakes', label: copy.keepsakes },
+  { href: '/about', label: copy.about },
 ]
 
 // The bar is transparent over the hero and gains a fill once the hero has scrolled under it.
@@ -32,7 +33,7 @@ const pastHero = () => {
 }
 const atTop = () => false
 
-export default function SiteNav() {
+export default function SiteNav({ copy, getApp }: { copy: Copy['nav']; getApp: string }) {
   const pathname = usePathname()
   const scrolled = useSyncExternalStore(subscribeScroll, pastHero, atTop)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -50,12 +51,12 @@ export default function SiteNav() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b ${filled ? 'bg-[rgba(12,11,20,0.85)] backdrop-blur-md border-[rgba(200,169,110,0.1)]' : 'border-transparent'}`}>
-      <nav aria-label="Main" className="max-w-6xl mx-auto px-4 sm:px-6 h-[72px] grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
+      <nav aria-label={copy.label} className="max-w-6xl mx-auto px-4 sm:px-6 h-[72px] grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
         <Link href="/" onClick={close} className="justify-self-start text-2xl text-[#f5efe3]" style={{fontFamily:'var(--font-playfair)'}}>interlüde</Link>
 
         {/* Desktop: the pill */}
         <ul className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-[rgba(245,239,227,0.9)] shadow-[0_2px_16px_rgba(0,0,0,0.25)]">
-          {LINKS.map(link => (
+          {links(copy).map(link => (
             <li key={link.href}>
               <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}
                 className="block px-4 py-2 rounded-full text-sm text-[#0f0e17] hover:bg-[#c8a96e] focus-visible:bg-[#c8a96e] transition-colors aria-[current=page]:bg-[rgba(200,169,110,0.35)] whitespace-nowrap">
@@ -65,8 +66,8 @@ export default function SiteNav() {
           ))}
         </ul>
         <div className="hidden lg:flex justify-self-end items-center gap-5">
-          <a href={SIGN_IN_URL} className="text-sm text-[rgba(245,239,227,0.6)] hover:text-[#c8a96e] transition-colors whitespace-nowrap">Sign in</a>
-          <GetAppButton size="sm" />
+          <a href={SIGN_IN_URL} className="text-sm text-[rgba(245,239,227,0.6)] hover:text-[#c8a96e] transition-colors whitespace-nowrap">{copy.signIn}</a>
+          <GetAppButton size="sm" label={getApp} />
         </div>
 
         {/* Mobile: menu button */}
@@ -78,14 +79,14 @@ export default function SiteNav() {
             <span className={`absolute left-0 top-[5px] w-4 h-0.5 bg-current transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
             <span className={`absolute left-0 w-4 h-0.5 bg-current transition-transform ${menuOpen ? 'top-[5px] -rotate-45' : 'top-[10px]'}`} />
           </span>
-          {menuOpen ? 'Close' : 'Menu'}
+          {menuOpen ? copy.close : copy.menu}
         </button>
       </nav>
 
       {/* Mobile: slide-down panel */}
       <div id="site-menu" hidden={!menuOpen} className="lg:hidden border-t border-[rgba(200,169,110,0.1)] max-h-[calc(100dvh-72px)] overflow-y-auto">
         <ul className="px-4 sm:px-6 py-4 flex flex-col">
-          {LINKS.map(link => (
+          {links(copy).map(link => (
             <li key={link.href}>
               <Link href={link.href} onClick={close} aria-current={pathname === link.href ? 'page' : undefined}
                 className="block py-4 text-xl text-[#f5efe3] hover:text-[#c8a96e] border-b border-[rgba(245,239,227,0.06)] aria-[current=page]:text-[#c8a96e]"
@@ -96,8 +97,8 @@ export default function SiteNav() {
           ))}
         </ul>
         <div className="px-4 sm:px-6 pb-6 flex flex-col items-center gap-4">
-          <div className="w-full flex justify-center" onClick={close}><GetAppButton /></div>
-          <a href={SIGN_IN_URL} className="py-2 text-sm text-[rgba(245,239,227,0.6)] hover:text-[#c8a96e]">Sign in</a>
+          <div className="w-full flex justify-center" onClick={close}><GetAppButton label={getApp} /></div>
+          <a href={SIGN_IN_URL} className="py-2 text-sm text-[rgba(245,239,227,0.6)] hover:text-[#c8a96e]">{copy.signIn}</a>
         </div>
       </div>
     </header>
