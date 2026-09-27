@@ -62,6 +62,18 @@ export default function About() {
         </div>
       </section>
 
+      {/* Closing note: set apart by rules and type, not a card */}
+      <section className="pb-14 px-4 sm:px-6 relative">
+        <div className="max-w-xl mx-auto text-center">
+          <div aria-hidden="true" className="w-12 h-px bg-[rgba(200,169,110,0.5)] mx-auto mb-8" />
+          <p className="text-[rgba(245,239,227,0.6)] text-lg leading-relaxed" style={{fontFamily:'var(--font-playfair)'}}>
+            Wangari Maathai, who began planting trees in Kenya and ended up with a Nobel Peace Prize, once said: <em>it is the little things citizens do. That is what will make the difference. My little thing is planting trees.</em>
+          </p>
+          <p className="mt-6 text-[#c8a96e] text-2xl" style={{fontFamily:'var(--font-playfair)'}}>Our little thing is layovers.</p>
+          <div aria-hidden="true" className="w-12 h-px bg-[rgba(200,169,110,0.5)] mx-auto mt-8" />
+        </div>
+      </section>
+
       {/* At a glance */}
       <section className="py-10 px-4 sm:px-6 border-y border-[rgba(200,169,110,0.1)] relative">
         <div className="max-w-3xl mx-auto grid grid-cols-3 gap-4">
