@@ -1,7 +1,5 @@
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
-import { LanguageProvider } from '@/components/LanguageProvider'
-
 import InstallPrompt from '@/components/InstallPrompt'
 
 const playfair = Playfair_Display({
@@ -38,11 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${playfair.variable} ${dmSans.variable}`}>
-        <LanguageProvider>
-          {children}
-        
+        {children}
         <InstallPrompt />
-        </LanguageProvider>
       </body>
     </html>
   )
