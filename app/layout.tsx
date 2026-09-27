@@ -15,8 +15,8 @@ const dmSans = DM_Sans({
 })
 
 export const metadata = {
-  title: 'Interlüde — Turn your layover into a story',
-  description: 'Meet fellow travelers during your layover. Explore cities together. Never miss your flight.',
+  title: 'Interlüde — The best stories hide in the in-between',
+  description: 'Enter your layover and get a plan built around your passport, your window and your budget, then get back to the gate on time.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
