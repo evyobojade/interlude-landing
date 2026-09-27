@@ -261,7 +261,7 @@ export default function Home() {
             {[
               {icon:'🛂',title:'Visa intelligence',desc:'Passport & citizenship check — costs, processing times and direct apply links. Plan ahead, never get caught off guard.'},
               {icon:'🗺',title:'Live airport guides',desc:'Inside & outside — always updated with new shops, airside dining and lounge options.'},
-              {icon:'🎭',title:'Live events & festivals',desc:'Concerts, markets, cultural events near your airport with exact travel times — via Ticketmaster and Eventbrite.'},
+              {icon:'🎭',title:'Live events & festivals',desc:'Live events and concerts near your airport, with exact travel times.'},
               {icon:'🏛',title:'Tourist hotspots',desc:'Galleries, monuments, iconic restaurants and hidden gems — curated for your exact layover duration.'},
               {icon:'🌤',title:'Weather & outfit tips',desc:'Know exactly what to wear before you step outside. Weather forecasts and packing tips for your layover city.'},
               {icon:'🗣',title:'Local phrases & greetings',desc:'Learn how to say hello, thank you and more in the local language. Connect authentically wherever you land.'},
@@ -304,11 +304,38 @@ export default function Home() {
             <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.3)] rounded-2xl p-6 relative">
               <span className="absolute top-5 right-5 bg-[rgba(200,169,110,0.15)] text-[#c8a96e] text-[10px] font-medium uppercase tracking-widest px-2.5 py-1 rounded-full">Launching soon</span>
               <p className="text-[#f5efe3] font-medium text-lg mb-2" style={{fontFamily:'var(--font-playfair)'}}>Interlüde Pass</p>
-              <p className="text-4xl font-light text-[#c8a96e] mb-1" style={{fontFamily:'var(--font-playfair)'}}>$12.99<span className="text-base text-[rgba(245,239,227,0.45)]"> per trip</span></p>
-              <p className="text-[rgba(245,239,227,0.6)] text-sm mb-3">or $59.99 per year</p>
-              <p className="text-[rgba(245,239,227,0.45)] text-sm leading-relaxed">One pass, two ways to pay: a single trip or a full year of layovers.</p>
+              <p className="text-4xl font-light text-[#c8a96e] mb-1" style={{fontFamily:'var(--font-playfair)'}}>$12.99<span className="text-base text-[rgba(245,239,227,0.45)]"> CAD per trip</span></p>
+              <p className="text-[rgba(245,239,227,0.6)] text-sm mb-4">or $59.99 CAD per year</p>
+              <ul className="space-y-2">
+                {[
+                  'The full AI itinerary',
+                  'Visa intelligence across 194 passports',
+                  'Advanced matching',
+                  'Currency and transport intelligence',
+                  'Live flight and gate alerts',
+                ].map(item => (
+                  <li key={item} className="flex gap-2 text-[rgba(245,239,227,0.55)] text-sm leading-relaxed">
+                    <span className="text-[#c8a96e]" aria-hidden="true">✓</span>{item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* KEEPSAKES */}
+      <section className="py-16 px-6 bg-[#0c0b14]">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="inline-block bg-[rgba(200,169,110,0.15)] text-[#c8a96e] text-[10px] font-medium uppercase tracking-widest px-2.5 py-1 rounded-full mb-6">Coming soon</span>
+          <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Keepsakes</p>
+          <h2 className="text-3xl md:text-5xl text-[#f5efe3] mb-6 leading-tight" style={{fontFamily:'var(--font-playfair)'}}>The best part comes after.</h2>
+          <p className="text-[rgba(245,239,227,0.55)] text-lg leading-relaxed mb-4">
+            Every layover leaves something behind. Your photos, your notes, the song that was playing.
+          </p>
+          <p className="text-[rgba(245,239,227,0.55)] text-lg leading-relaxed">
+            Interlüde turns them into something you keep — custom pieces you wear, and an illustrated storybook of the day, printed and posted to you.
+          </p>
         </div>
       </section>
 
