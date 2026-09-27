@@ -1,7 +1,7 @@
 // Moved unchanged from the old single-page layout
 export default function Pricing() {
   return (
-    <section className="py-14 px-6">
+    <section id="pricing" className="py-14 px-6 scroll-mt-20">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Pricing</p>

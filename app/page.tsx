@@ -33,7 +33,7 @@ export default function Home() {
       <SiteNav />
 
       {/* 1. Hero */}
-      <section className="min-h-[85vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-24 pb-10 relative">
+      <section data-nav-hero className="min-h-[85vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-24 pb-10 relative">
         <div className="mb-10"><Orb /></div>
         <BrandLine />
         <div className="mt-10 w-full flex justify-center"><GetAppButton /></div>
@@ -57,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* 4. How it works */}
-      <section className="py-14 px-4 sm:px-6 bg-[#0c0b14] relative">
+      <section id="how-it-works" className="py-14 px-4 sm:px-6 bg-[#0c0b14] relative scroll-mt-20">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">How it works</p>

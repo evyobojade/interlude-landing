@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Smooth scrolling for the nav's section links, unless the visitor prefers reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 :root {
   --font-playfair: 'Playfair Display', Georgia, serif;
   --font-dm-sans: 'DM Sans', sans-serif;

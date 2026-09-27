@@ -1,7 +1,7 @@
 // Moved unchanged from the old single-page layout
 export default function Keepsakes() {
   return (
-    <section className="py-16 px-6 bg-[#0c0b14]">
+    <section id="keepsakes" className="py-16 px-6 bg-[#0c0b14] scroll-mt-20">
       <div className="max-w-2xl mx-auto text-center">
         <span className="inline-block bg-[rgba(200,169,110,0.15)] text-[#c8a96e] text-[10px] font-medium uppercase tracking-widest px-2.5 py-1 rounded-full mb-6">Coming soon</span>
         <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Keepsakes</p>

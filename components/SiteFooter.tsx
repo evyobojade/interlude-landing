@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import { CONTACT_EMAIL, PRESS_KIT_URL } from '@/lib/links'
+import { CONTACT_EMAIL, PRESS_KIT_URL, SIGN_IN_URL } from '@/lib/links'
 
 const LINKS = [
   { href: '/about', label: 'About' },
+  { href: SIGN_IN_URL, label: 'Sign in' },
   { href: PRESS_KIT_URL, label: 'Press & Media' },
   { href: `mailto:${CONTACT_EMAIL}`, label: 'Contact' },
   { href: 'https://app.getinterlude.app/privacy', label: 'Privacy' },
