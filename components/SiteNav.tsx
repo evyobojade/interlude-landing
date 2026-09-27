@@ -3,9 +3,10 @@ import { useEffect, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import GetAppButton from '@/components/GetAppButton'
+import { SIGN_IN_URL } from '@/lib/links'
 
 // Top navigation: wordmark on the left, a pill of links in the centre, Get Interlüde on the right.
-// Below md the pill does not fit, so it becomes a menu button with a slide-down panel.
+// Below lg the pill and Sign in do not fit, so it becomes a menu button with a slide-down panel.
 // Section links always point at the home page ("/#pricing"), so they work from /about too.
 const LINKS = [
   { href: '/#how-it-works', label: 'How it works' },
@@ -49,11 +50,11 @@ export default function SiteNav() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b ${filled ? 'bg-[rgba(12,11,20,0.85)] backdrop-blur-md border-[rgba(200,169,110,0.1)]' : 'border-transparent'}`}>
-      <nav aria-label="Main" className="max-w-6xl mx-auto px-4 sm:px-6 h-[72px] grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center gap-4">
+      <nav aria-label="Main" className="max-w-6xl mx-auto px-4 sm:px-6 h-[72px] grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
         <Link href="/" onClick={close} className="justify-self-start text-2xl text-[#f5efe3]" style={{fontFamily:'var(--font-playfair)'}}>interlüde</Link>
 
         {/* Desktop: the pill */}
-        <ul className="hidden md:flex items-center gap-1 p-1 rounded-full bg-[rgba(245,239,227,0.9)] shadow-[0_2px_16px_rgba(0,0,0,0.25)]">
+        <ul className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-[rgba(245,239,227,0.9)] shadow-[0_2px_16px_rgba(0,0,0,0.25)]">
           {LINKS.map(link => (
             <li key={link.href}>
               <Link href={link.href} aria-current={pathname === link.href ? 'page' : undefined}
@@ -63,12 +64,15 @@ export default function SiteNav() {
             </li>
           ))}
         </ul>
-        <div className="hidden md:block justify-self-end"><GetAppButton size="sm" /></div>
+        <div className="hidden lg:flex justify-self-end items-center gap-5">
+          <a href={SIGN_IN_URL} className="text-sm text-[rgba(245,239,227,0.6)] hover:text-[#c8a96e] transition-colors whitespace-nowrap">Sign in</a>
+          <GetAppButton size="sm" />
+        </div>
 
         {/* Mobile: menu button */}
         <button type="button" onClick={() => setMenuOpen(open => !open)}
           aria-expanded={menuOpen} aria-controls="site-menu"
-          className="md:hidden justify-self-end flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(245,239,227,0.9)] text-[#0f0e17] text-sm">
+          className="lg:hidden justify-self-end flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(245,239,227,0.9)] text-[#0f0e17] text-sm">
           <span aria-hidden="true" className="relative w-4 h-3">
             <span className={`absolute left-0 w-4 h-0.5 bg-current transition-transform ${menuOpen ? 'top-[5px] rotate-45' : 'top-0'}`} />
             <span className={`absolute left-0 top-[5px] w-4 h-0.5 bg-current transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
@@ -79,7 +83,7 @@ export default function SiteNav() {
       </nav>
 
       {/* Mobile: slide-down panel */}
-      <div id="site-menu" hidden={!menuOpen} className="md:hidden border-t border-[rgba(200,169,110,0.1)] max-h-[calc(100dvh-72px)] overflow-y-auto">
+      <div id="site-menu" hidden={!menuOpen} className="lg:hidden border-t border-[rgba(200,169,110,0.1)] max-h-[calc(100dvh-72px)] overflow-y-auto">
         <ul className="px-4 sm:px-6 py-4 flex flex-col">
           {LINKS.map(link => (
             <li key={link.href}>
@@ -91,7 +95,10 @@ export default function SiteNav() {
             </li>
           ))}
         </ul>
-        <div className="px-4 sm:px-6 pb-6 flex justify-center" onClick={close}><GetAppButton /></div>
+        <div className="px-4 sm:px-6 pb-6 flex flex-col items-center gap-4">
+          <div className="w-full flex justify-center" onClick={close}><GetAppButton /></div>
+          <a href={SIGN_IN_URL} className="py-2 text-sm text-[rgba(245,239,227,0.6)] hover:text-[#c8a96e]">Sign in</a>
+        </div>
       </div>
     </header>
   )
