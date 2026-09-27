@@ -1,6 +1,6 @@
 'use client'
 import { useState, useSyncExternalStore } from 'react'
-import { CONSENT_TEXT } from '@/lib/newsletter'
+import { CONSENT_TEXT, HONEYPOT_FIELD } from '@/lib/newsletter'
 
 const MESSAGES: Record<string, { text: string; ok: boolean }> = {
   subscribed: { text: "You're subscribed. Thank you.", ok: true },
@@ -13,6 +13,10 @@ const MESSAGES: Record<string, { text: string; ok: boolean }> = {
 
 // Plain form posting to /api/subscribe, so it works without JavaScript (the route redirects
 // back with ?newsletter=<result>). With JavaScript it submits in place and shows the result.
+const HONEYPOT_STYLE: React.CSSProperties = {
+  position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden',
+}
+
 // Result of a no-JavaScript submission, passed back in the URL by the route's redirect
 const noSubscribe = () => () => {}
 const redirectResult = () => new URLSearchParams(window.location.search).get('newsletter')
@@ -54,9 +58,11 @@ export default function NewsletterSignup({ source }: { source: '/' | '/about' })
         </div>
         <form action="/api/subscribe" method="post" onSubmit={onSubmit} className="flex flex-col gap-4">
           <input type="hidden" name="source" value={source} />
-          {/* Honeypot: hidden from people, often filled in by bots */}
-          <div className="absolute -left-[9999px]" aria-hidden="true">
-            <label>Leave this empty<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
+          {/* Honeypot: off-screen for people, still in the page for bots to fill in. Inline styles,
+              not a class, so it is hidden even before (or without) the stylesheet loading. The name
+              is one browsers do not autofill, so a real visitor is never mistaken for a bot. */}
+          <div aria-hidden="true" style={HONEYPOT_STYLE}>
+            <label>Leave this empty<input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" /></label>
           </div>
           <label className="sr-only" htmlFor="newsletter-email">Email address</label>
           <input id="newsletter-email" type="email" name="email" required autoComplete="email" maxLength={254}

@@ -1,6 +1,6 @@
 import { isIP } from 'node:net'
 import { NextResponse, type NextRequest } from 'next/server'
-import { CONSENT_TEXT, CONSENT_VERSION, NEWSLETTER_SOURCES } from '@/lib/newsletter'
+import { CONSENT_TEXT, CONSENT_VERSION, HONEYPOT_FIELD, NEWSLETTER_SOURCES } from '@/lib/newsletter'
 
 // Newsletter signups, stored in Supabase with proof of express consent (CASL): the exact
 // wording shown, its version, the time, the page and the IP address. Server-side only; the
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     : NextResponse.redirect(new URL(`${source}?newsletter=${result}#newsletter`, request.url), 303)
 
   // Honeypot filled in: answer as if it worked so bots learn nothing
-  if (fields.website) return reply(200, 'subscribed')
+  if (fields[HONEYPOT_FIELD]) return reply(200, 'subscribed')
 
   const email = (fields.email || '').trim().toLowerCase()
   if (email.length > 254 || !EMAIL_RE.test(email)) return reply(400, 'invalid-email')
