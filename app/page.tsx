@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Starfield from '@/components/Starfield'
 import Orb from '@/components/Orb'
 import SiteNav from '@/components/SiteNav'
@@ -40,10 +41,11 @@ export default function Home() {
       </section>
 
       {/* 2. Credibility strip */}
-      <section className="px-4 sm:px-6 py-5 border-y border-[rgba(200,169,110,0.1)] relative">
-        <p className="text-center text-[rgba(245,239,227,0.45)] text-xs sm:text-sm tracking-wide">
+      <section className="border-y border-[rgba(200,169,110,0.1)] relative">
+        <Link href="/about" className="group block px-4 sm:px-6 py-5 text-center text-[rgba(245,239,227,0.45)] text-xs sm:text-sm tracking-wide hover:text-[#c8a96e] transition-colors">
           FoundHers Innovation Labs · League of Innovators · As seen in Victoria News
-        </p>
+          <span aria-hidden="true" className="inline-block ml-1.5 transition-transform group-hover:translate-x-0.5">→</span>
+        </Link>
       </section>
 
       {/* 3. The layover moment */}
@@ -88,6 +90,11 @@ export default function Home() {
         <div className="mb-8 flex justify-center"><Orb size={140} /></div>
         <BrandLine as="h2" />
         <div className="mt-10 w-full flex justify-center"><GetAppButton /></div>
+      </section>
+
+      {/* For press and investors */}
+      <section className="px-4 sm:px-6 pb-10 text-center relative">
+        <Link href="/about" className="text-[#c8a96e] text-sm hover:opacity-80 transition-opacity">Press, recognition and the full story →</Link>
       </section>
 
       <SiteFooter />
