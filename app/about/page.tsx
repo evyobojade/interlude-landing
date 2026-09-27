@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Starfield from '@/components/Starfield'
 import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
@@ -46,6 +47,10 @@ export default function About() {
       {/* Founder */}
       <section className="pt-28 pb-14 px-4 sm:px-6 relative">
         <div className="max-w-2xl mx-auto text-center">
+          <Image src="/evidence-obojade.jpg" width={1280} height={1600} priority
+            sizes="(min-width: 640px) 224px, 176px"
+            alt="Evidence Oghenekioja Obojade, founder of Interlüde"
+            className="w-44 sm:w-56 h-auto mx-auto mb-8 rounded-2xl border border-[rgba(200,169,110,0.25)]" />
           <p className={eyebrow}>About Interlüde</p>
           <h1 className="text-3xl md:text-4xl text-[#f5efe3] mb-4" style={{fontFamily:'var(--font-playfair)'}}>Founded by Evidence Oghenekioja Obojade</h1>
           <p className="text-[rgba(245,239,227,0.55)] text-base leading-relaxed mb-6">
