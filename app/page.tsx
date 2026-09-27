@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react'
 import { detectLanguage, loadMessages, t } from '@/lib/i18n'
 import LanguageSelector from '@/components/LanguageSelector'
 
+// One number for every airport count on the page
+const AIRPORT_COUNT = 150
+const FEATURED_AIRPORTS = ['LHR','DXB','CDG','SIN','JFK','LOS','ACC','NBO','DOH','YYZ','BOM','ICN','GRU','IST','SYD','HKG','NRT','DEL','ORD','LAX','ATL','YVR','CPH','AMS','FRA']
+
 export default function Home() {
   const [messages, setMessages] = useState(null)
   const [showLanguage, setShowLanguage] = useState(false)
@@ -85,7 +89,7 @@ export default function Home() {
         <p className="text-[rgba(245,239,227,0.55)] text-lg md:text-xl leading-relaxed max-w-lg mb-10">
           Interlüde connects travelers during airport layovers — matching you by time, language, hobbies and interests. Explore cities together or go solo. International or domestic. Plan ahead or jump in. Your layover, your way.
         </p>
-<p className="text-[rgba(245,239,227,0.25)] text-xs mt-6">Available on web now · App Store & Google Play coming soon</p>
+<p className="text-[rgba(245,239,227,0.25)] text-xs mt-6">On the App Store and the web now · Google Play coming soon</p>
         <div className="mt-8 flex flex-col items-center gap-1 animate-bounce">
           <div className="w-px h-8 bg-gradient-to-b from-[rgba(200,169,110,0.4)] to-transparent" />
           <div className="w-1.5 h-1.5 rounded-full bg-[rgba(200,169,110,0.4)]" />
@@ -93,25 +97,44 @@ export default function Home() {
       </section>
 
       
-      {/* TRACTION & PROOF */}
+      {/* RECOGNITION */}
       <section className="py-10 px-6 border-t border-[rgba(200,169,110,0.1)]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Backed by global recognition</p>
-            <h2 className="text-2xl md:text-3xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>Selected for Web Summit 2026</h2>
+            <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Recognition</p>
+            <h2 className="text-2xl md:text-3xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>Selected, backed and in the news</h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.15)] rounded-2xl p-6">
-              <p className="text-[#c8a96e] text-sm font-medium mb-2">🇨🇦 Web Summit Vancouver 2026</p>
-              <p className="text-[rgba(245,239,227,0.5)] text-sm mb-3">May 11-14, 2026 · Exhibition Booth · Investor Access</p>
-              <p className="text-[rgba(245,239,227,0.3)] text-xs">Selected for startup programme with exhibition space and direct access to global investors and partners.</p>
+          {[
+            {group:'Programs & competitions', items:[
+              {title:'MELAMOON Pitch · FACE Coalition and Interac', detail:'Vancouver Top 10 · advanced to the national Top 50', href:'https://www.instagram.com/reel/DcMq4LoBASl/', cta:'Watch the pitch'},
+              {title:'FoundHers Innovation Labs · Cohort III', detail:'One of 16 founders selected from 203 applications', href:'https://www.instagram.com/p/DdUGccgFrnP/', cta:'Read the announcement'},
+              {title:'League of Innovators · Labs 17', detail:'National accelerator'},
+              {title:'Web Summit Vancouver 2026', detail:'May 2026 · Startup programme with exhibition booth and investor access'},
+              {title:'Web Summit Lisbon 2026', detail:'November 2026 · 71,000+ attendees · Exhibition space'},
+            ]},
+            {group:'In the press', items:[
+              {title:'Victoria News', detail:'25 September 2026 · Showcase shines light on University of Victoria startups and ventures', href:'https://vicnews.com/2026/09/25/showcase-shines-light-on-university-of-victoria-startups-and-ventures/', cta:'Read the article'},
+              {title:'Vancouver Island Free Daily', detail:'25 September 2026 · Showcase shines light on University of Victoria startups and ventures', href:'https://vancouverislandfreedaily.com/2026/09/25/showcase-shines-light-on-university-of-victoria-startups-and-ventures/', cta:'Read the article'},
+            ]},
+          ].map(section => (
+            <div key={section.group} className="mb-6 last:mb-0">
+              <p className="text-[rgba(245,239,227,0.35)] text-xs uppercase tracking-widest mb-3">{section.group}</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {section.items.map(item => (
+                  <div key={item.title} className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.15)] rounded-2xl p-5 flex flex-col">
+                    <p className="text-[#c8a96e] text-sm font-medium mb-2">{item.title}</p>
+                    <p className="text-[rgba(245,239,227,0.5)] text-sm leading-relaxed">{item.detail}</p>
+                    {item.href && (
+                      <a href={item.href} target="_blank" rel="noopener noreferrer"
+                        className="mt-3 text-[#c8a96e] text-xs hover:opacity-80 transition-opacity">
+                        {item.cta} →
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.15)] rounded-2xl p-6">
-              <p className="text-[#c8a96e] text-sm font-medium mb-2">🇵🇹 Web Summit Lisbon 2026</p>
-              <p className="text-[rgba(245,239,227,0.5)] text-sm mb-3">November 2026 · 71,000+ Attendees · Exhibition Space</p>
-              <p className="text-[rgba(245,239,227,0.3)] text-xs">Selected for the world's largest tech conference with exhibition booth and access to founders, investors and partners from 170+ countries.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -173,7 +196,7 @@ export default function Home() {
       <section className="py-10 px-6 border-y border-[rgba(200,169,110,0.1)]">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            {number:'150',label:'Airports worldwide'},
+            {number:String(AIRPORT_COUNT),label:'Airports worldwide'},
             {number:'15',label:'Languages supported'},
             {number:'6',label:'Continents covered'},
             {number:'$0',label:'Free to join'},
@@ -251,9 +274,9 @@ export default function Home() {
               {icon:'⏰',title:'Return reminders',desc:'We calculate your travel time back and tell you exactly when to leave so you never miss your flight.'},
               {icon:'🧭',title:'Solo explorer mode',desc:'Going alone? We build your perfect solo itinerary — tailored to your interests and layover duration.'},
               {icon:'🏠',title:'Domestic layovers',desc:'Works for local flights too — no passport, no visa, no problem.'},
-              {icon:'🌐',title:'15 languages',desc:'Yoruba, Igbo, Twi, Swahili, Arabic, Hindi, Tagalog, Chinese, Japanese and more.'},
+              {icon:'🌐',title:'15 languages',desc:'Yoruba, Igbo, Twi, Swahili, Arabic, Hindi, Korean, Chinese, Japanese and more.'},
               {icon:'🍜',title:'Food & dining',desc:'Best local restaurants, street food, airside dining and hidden gems — inside and outside the airport.'},
-              {icon:'📱',title:'Available on web now',desc:'Works instantly on iPhone and Android. App Store & Google Play coming soon.'},
+              {icon:'📱',title:'iPhone, web and Android',desc:'Get it on the App Store, or use it in any phone browser, including Android. Google Play coming soon.'},
             ].map((feature,i) => (
               <div key={i} className="bg-[rgba(245,239,227,0.03)] border border-[rgba(200,169,110,0.08)] rounded-2xl p-4 hover:border-[rgba(200,169,110,0.2)] transition-all">
                 <div className="text-2xl mb-3">{feature.icon}</div>
@@ -261,6 +284,30 @@ export default function Home() {
                 <p className="text-[rgba(245,239,227,0.35)] text-xs leading-relaxed">{feature.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section className="py-14 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Pricing</p>
+            <h2 className="text-3xl md:text-4xl text-[#f5efe3]" style={{fontFamily:'var(--font-playfair)'}}>Free to start</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.15)] rounded-2xl p-6">
+              <p className="text-[#f5efe3] font-medium text-lg mb-2" style={{fontFamily:'var(--font-playfair)'}}>Free</p>
+              <p className="text-4xl font-light text-[#c8a96e] mb-3" style={{fontFamily:'var(--font-playfair)'}}>$0</p>
+              <p className="text-[rgba(245,239,227,0.45)] text-sm leading-relaxed">Join and plan your layover for free.</p>
+            </div>
+            <div className="bg-[rgba(200,169,110,0.05)] border border-[rgba(200,169,110,0.3)] rounded-2xl p-6 relative">
+              <span className="absolute top-5 right-5 bg-[rgba(200,169,110,0.15)] text-[#c8a96e] text-[10px] font-medium uppercase tracking-widest px-2.5 py-1 rounded-full">Launching soon</span>
+              <p className="text-[#f5efe3] font-medium text-lg mb-2" style={{fontFamily:'var(--font-playfair)'}}>Interlüde Pass</p>
+              <p className="text-4xl font-light text-[#c8a96e] mb-1" style={{fontFamily:'var(--font-playfair)'}}>$12.99<span className="text-base text-[rgba(245,239,227,0.45)]"> per trip</span></p>
+              <p className="text-[rgba(245,239,227,0.6)] text-sm mb-3">or $59.99 per year</p>
+              <p className="text-[rgba(245,239,227,0.45)] text-sm leading-relaxed">One pass, two ways to pay: a single trip or a full year of layovers.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -293,13 +340,13 @@ export default function Home() {
       <section className="py-14 px-6 bg-[#0c0b14]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Global coverage</p>
-          <h2 className="text-3xl md:text-4xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>150 airports across 6 continents</h2>
+          <h2 className="text-3xl md:text-4xl text-[#f5efe3] mb-6" style={{fontFamily:'var(--font-playfair)'}}>{AIRPORT_COUNT} airports across 6 continents</h2>
           <p className="text-[rgba(245,239,227,0.4)] text-sm leading-relaxed mb-10 max-w-xl mx-auto">From Lagos to London, Dubai to Toronto, Singapore to New York — if you have a layover, we have a guide. And we are always adding more.</p>
           <div className="flex flex-wrap justify-center gap-2">
-            {['LHR','DXB','CDG','SIN','JFK','LOS','ACC','NBO','DOH','YYZ','BOM','ICN','GRU','IST','SYD','HKG','NRT','DEL','ORD','LAX','ATL','YVR','CPH','AMS','FRA'].map(code => (
+            {FEATURED_AIRPORTS.map(code => (
               <span key={code} className="bg-[rgba(200,169,110,0.08)] border border-[rgba(200,169,110,0.15)] text-[#c8a96e] text-xs px-3 py-1.5 rounded-full font-medium">{code}</span>
             ))}
-            <span className="bg-[rgba(200,169,110,0.08)] border border-[rgba(200,169,110,0.15)] text-[rgba(200,169,110,0.5)] text-xs px-3 py-1.5 rounded-full">+96 more</span>
+            <span className="bg-[rgba(200,169,110,0.08)] border border-[rgba(200,169,110,0.15)] text-[rgba(200,169,110,0.5)] text-xs px-3 py-1.5 rounded-full">+{AIRPORT_COUNT - FEATURED_AIRPORTS.length} more</span>
           </div>
         </div>
       </section>
@@ -317,7 +364,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-5xl text-[#f5efe3] mb-6 leading-tight" style={{fontFamily:'var(--font-playfair)'}}>
             Moments and memories<br />that make life worth living.
           </h2>
-          <p className="text-[rgba(245,239,227,0.45)] text-lg mb-10">Join free. Works on iPhone and Android right now. App Store & Google Play coming soon.</p>
+          <p className="text-[rgba(245,239,227,0.45)] text-lg mb-10">Free to start. On the App Store and in any phone browser now. Google Play coming soon.</p>
           <button onClick={() => window.location.href = 'https://app.getinterlude.app/auth?mode=signup'} className="w-full max-w-sm py-5 rounded-2xl bg-[#c8a96e] text-[#0f0e17] font-medium text-lg hover:opacity-90 transition-opacity mx-auto block">
             Start your journey →
           </button>
@@ -344,7 +391,7 @@ export default function Home() {
             <a href="https://app.getinterlude.app/data-request" className="hover:text-[#c8a96e] transition-colors">Data Request</a>
           </div>
           <div className="text-center md:text-right">
-            <p className="text-[rgba(245,239,227,0.2)] text-xs">© 2026 Interlüde Travels</p>
+            <p className="text-[rgba(245,239,227,0.2)] text-xs">© {new Date().getFullYear()} Interlude Travels Inc.</p>
             <p className="text-[rgba(245,239,227,0.15)] text-xs">Langford, BC, Canada</p>
           </div>
         </div>
