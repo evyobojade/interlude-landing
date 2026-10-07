@@ -14,12 +14,12 @@ const SIZES = {
   sm: 'px-5 py-2 rounded-full text-sm whitespace-nowrap', // top navigation
 }
 
-export default function GetAppButton({ className = '', size = 'lg' }: { className?: string; size?: keyof typeof SIZES }) {
+export default function GetAppButton({ label, className = '', size = 'lg' }: { label: string; className?: string; size?: keyof typeof SIZES }) {
   const href = useSyncExternalStore(subscribe, browserHref, serverHref)
   return (
     <a href={href}
       className={`inline-block bg-[#c8a96e] text-[#0f0e17] font-medium text-center hover:opacity-90 transition-opacity ${SIZES[size]} ${className}`}>
-      Get Interlüde
+      {label}
     </a>
   )
 }

@@ -1,14 +1,16 @@
 'use client'
 import { useState, useSyncExternalStore } from 'react'
 import { CONSENT_TEXT, HONEYPOT_FIELD } from '@/lib/newsletter'
+import type { Copy } from '@/lib/copy'
 
-const MESSAGES: Record<string, { text: string; ok: boolean }> = {
-  subscribed: { text: "You're subscribed. Thank you.", ok: true },
-  'invalid-email': { text: 'Please enter a valid email address.', ok: false },
-  'consent-required': { text: 'Please tick the box to agree to receive emails.', ok: false },
-  'rate-limited': { text: 'Too many attempts. Please try again in a few minutes.', ok: false },
-  unavailable: { text: 'Signups are temporarily unavailable. Please try again later.', ok: false },
-  error: { text: 'Something went wrong. Please try again.', ok: false },
+// Result codes sent by /api/subscribe, and the line of copy shown for each
+const RESULTS: Record<string, { key: keyof Copy['newsletter']['results']; ok: boolean }> = {
+  subscribed: { key: 'subscribed', ok: true },
+  'invalid-email': { key: 'invalidEmail', ok: false },
+  'consent-required': { key: 'consentRequired', ok: false },
+  'rate-limited': { key: 'rateLimited', ok: false },
+  unavailable: { key: 'unavailable', ok: false },
+  error: { key: 'error', ok: false },
 }
 
 // Plain form posting to /api/subscribe, so it works without JavaScript (the route redirects
@@ -22,7 +24,8 @@ const noSubscribe = () => () => {}
 const redirectResult = () => new URLSearchParams(window.location.search).get('newsletter')
 const noResult = () => null
 
-export default function NewsletterSignup({ source }: { source: '/' | '/about' }) {
+// The consent wording is not in the copy file: it is legal text stored with each signup.
+export default function NewsletterSignup({ source, copy }: { source: '/' | '/about'; copy: Copy['newsletter'] }) {
   const [submitted, setStatus] = useState<string | null>(null)
   const [sending, setSending] = useState(false)
   const fromRedirect = useSyncExternalStore(noSubscribe, redirectResult, noResult)
@@ -39,7 +42,7 @@ export default function NewsletterSignup({ source }: { source: '/' | '/about' })
         body: new FormData(form),
       })
       const data = await res.json().catch(() => ({}))
-      setStatus(MESSAGES[data.status] ? data.status : 'error')
+      setStatus(RESULTS[data.status] ? data.status : 'error')
       if (data.status === 'subscribed') form.reset()
     } catch {
       setStatus('error')
@@ -47,14 +50,15 @@ export default function NewsletterSignup({ source }: { source: '/' | '/about' })
     setSending(false)
   }
 
-  const message = status ? MESSAGES[status] : null
+  const result = status ? RESULTS[status] : null
+  const message = result ? { text: copy.results[result.key], ok: result.ok } : null
   return (
     <section id="newsletter" className="py-14 px-4 sm:px-6 relative">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">Newsletter</p>
-          <h2 className="text-3xl text-[#f5efe3] mb-3" style={{fontFamily:'var(--font-playfair)'}}>Stay in the loop</h2>
-          <p className="text-[rgba(245,239,227,0.5)] text-base">Occasional news about Interlüde. Unsubscribe any time.</p>
+          <p className="text-[#c8a96e] text-xs uppercase tracking-widest mb-4">{copy.eyebrow}</p>
+          <h2 className="text-3xl text-[#f5efe3] mb-3" style={{fontFamily:'var(--font-playfair)'}}>{copy.heading}</h2>
+          <p className="text-[rgba(245,239,227,0.5)] text-base">{copy.intro}</p>
         </div>
         <form action="/api/subscribe" method="post" onSubmit={onSubmit} className="flex flex-col gap-4">
           <input type="hidden" name="source" value={source} />
@@ -64,9 +68,9 @@ export default function NewsletterSignup({ source }: { source: '/' | '/about' })
           <div aria-hidden="true" style={HONEYPOT_STYLE}>
             <label>Leave this empty<input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" /></label>
           </div>
-          <label className="sr-only" htmlFor="newsletter-email">Email address</label>
+          <label className="sr-only" htmlFor="newsletter-email">{copy.emailLabel}</label>
           <input id="newsletter-email" type="email" name="email" required autoComplete="email" maxLength={254}
-            placeholder="you@example.com"
+            placeholder={copy.emailPlaceholder}
             className="w-full px-4 py-4 rounded-xl bg-[rgba(245,239,227,0.06)] border border-[rgba(200,169,110,0.25)] text-[#f5efe3] placeholder-[rgba(245,239,227,0.3)] outline-none focus:border-[#c8a96e]" />
           <label className="flex items-start gap-3 text-left cursor-pointer">
             <input type="checkbox" name="consent" value="yes" required
@@ -75,7 +79,7 @@ export default function NewsletterSignup({ source }: { source: '/' | '/about' })
           </label>
           <button type="submit" disabled={sending}
             className="w-full py-4 rounded-xl bg-[#c8a96e] text-[#0f0e17] font-medium hover:opacity-90 transition-opacity disabled:opacity-50">
-            {sending ? 'Subscribing…' : 'Subscribe'}
+            {sending ? copy.subscribing : copy.subscribe}
           </button>
           <p role="status" aria-live="polite"
             className={`text-sm text-center min-h-[1.25rem] ${message ? (message.ok ? 'text-[#7fd1a8]' : 'text-[#f0a3a3]') : ''}`}>
